@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Minus, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { knowledgeBankMegaMenu, primaryNav, serviceMegaMenu } from "@/content/navigation";
 import { site } from "@/content/site";
 
@@ -14,10 +14,21 @@ type MobileNavigationProps = {
 export function MobileNavigation({ open, onClose }: MobileNavigationProps) {
   const [expanded, setExpanded] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (!open) {
+      setExpanded(null);
+    }
+  }, [open]);
+
   const toggle = (key: string) => setExpanded((current) => (current === key ? null : key));
 
   return (
-    <nav id="mobile-navigation" className={open ? "nav-links open mobile-nav-panel" : "nav-links mobile-nav-panel"} aria-label="Mobile navigation">
+    <nav
+      id="mobile-navigation"
+      className={open ? "nav-links open mobile-nav-panel" : "nav-links mobile-nav-panel"}
+      aria-label="Mobile navigation"
+      aria-hidden={!open}
+    >
       {primaryNav.map((item) => {
         if (item.megaMenu === "services") {
           const isOpen = expanded === "services";
