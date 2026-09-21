@@ -278,7 +278,24 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
 
 @media (max-width:980px) {
   .desktop-nav { display:none; }
-  .menu-button,.mobile-nav-panel { display:flex; }
+  .menu-button,.mobile-nav-footer,.mobile-nav-panel { display:flex; }
+  .site-header { height:70px; gap:12px; }
+  .brand { z-index:3; max-width:calc(100% - 56px); min-width:0; font-size:.92rem; }
+  .brand>span:last-child { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .brand-mark { width:34px; height:34px; flex:0 0 34px; font-size:.58rem; }
+  .menu-button { position:relative; z-index:3; flex:0 0 auto; width:44px; height:44px; display:grid; place-items:center; border:0; border-radius:50%; background:white; color:var(--ink); cursor:pointer; }
+  .menu-button svg { width:19px; }
+  .nav-links.mobile-nav-panel { position:fixed; inset:0; z-index:2; align-items:stretch; gap:0; min-height:100dvh; padding:calc(88px + env(safe-area-inset-top,0px)) var(--edge) calc(26px + env(safe-area-inset-bottom,0px)); flex-direction:column; font-size:1rem; font-weight:400; background:var(--dark); opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-12px); transition:opacity .25s,transform .35s var(--ease),visibility .35s; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+  .nav-links.mobile-nav-panel.open { opacity:1; visibility:visible; pointer-events:auto; transform:none; }
+  .mobile-nav-panel>a:not(.nav-cta) { min-height:44px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.13); font-family:var(--serif); font-size:clamp(1.35rem,4.8vw,1.65rem); line-height:1.1; }
+  .mobile-nav-panel>a:not(.nav-cta)::after { display:none; }
+  .mobile-nav-group-trigger { width:100%; min-height:44px; padding:14px 0; display:flex; align-items:center; justify-content:space-between; gap:12px; border:0; border-bottom:1px solid rgba(255,255,255,.13); background:transparent; color:white; font-family:var(--serif); font-size:clamp(1.35rem,4.8vw,1.65rem); line-height:1.1; text-align:left; cursor:pointer; }
+  .mobile-nav-group-trigger svg { flex:0 0 auto; }
+  .mobile-nav-submenu { display:grid; gap:0; padding:8px 0 12px; }
+  .mobile-nav-submenu a { min-height:44px; padding:10px 0 10px 12px; display:flex; align-items:center; border-bottom:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.78); font-size:.92rem; line-height:1.35; }
+  .mobile-nav-subgroup p { margin:12px 0 4px; padding-left:12px; color:rgba(255,255,255,.45); font-size:.64rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+  .mobile-nav-panel .nav-cta { margin-top:24px; min-height:50px; width:100%; display:flex; align-items:center; justify-content:center; }
+  .mobile-nav-footer { margin-top:auto; padding-top:28px; flex-wrap:wrap; gap:8px 16px; justify-content:space-between; color:rgba(255,255,255,.55); font-size:.68rem; }
   .value-grid,.service-grid,.resource-grid { grid-template-columns:repeat(2,1fr); }
   .profile-layout,.service-detail-layout,.article-layout,.split-copy { grid-template-columns:1fr; }
   .service-sidebar { position:static; }
@@ -291,6 +308,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .value-card:nth-child(4) { grid-column:1; }
   .value-card:nth-child(5) { grid-column:1/-1; min-height:230px; }
   .footer-grid { grid-template-columns:repeat(2,1fr); }
+  .section-intro h2,.services-head h2,.team-heading h2,.cta-card h2 { font-size:clamp(2.25rem,4.8vw,3rem); line-height:1; }
 }
 
 @media (max-width:760px) {
@@ -298,18 +316,6 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .site-header { height:68px; }
   .brand { max-width:calc(100vw - 76px); font-size:.87rem; }
   .brand-mark { width:32px; height:32px; flex:0 0 32px; font-size:.55rem; }
-  .menu-button { position:relative; z-index:3; width:44px; height:44px; display:grid; place-items:center; border:0; border-radius:50%; background:white; color:var(--ink); cursor:pointer; }
-  .menu-button svg { width:19px; }
-  .mobile-nav-panel { position:fixed; inset:0; z-index:2; min-height:100dvh; padding:100px 22px 26px; display:flex; flex-direction:column; align-items:stretch; gap:0; background:var(--dark); opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-12px); transition:opacity .25s,transform .35s var(--ease),visibility .35s; overflow-y:auto; }
-  .mobile-nav-panel.open { opacity:1; visibility:visible; pointer-events:auto; transform:none; }
-  .mobile-nav-panel>a:not(.nav-cta) { min-height:44px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.13); font-family:var(--serif); font-size:1.65rem; line-height:1.1; }
-  .mobile-nav-panel>a:not(.nav-cta)::after { display:none; }
-  .mobile-nav-group-trigger { width:100%; min-height:44px; padding:14px 0; display:flex; align-items:center; justify-content:space-between; border:0; border-bottom:1px solid rgba(255,255,255,.13); background:transparent; color:white; font-family:var(--serif); font-size:1.65rem; text-align:left; cursor:pointer; }
-  .mobile-nav-submenu { display:grid; gap:0; padding:8px 0 12px; }
-  .mobile-nav-submenu a { min-height:44px; padding:10px 0 10px 12px; display:flex; align-items:center; border-bottom:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.78); font-size:.92rem; line-height:1.35; }
-  .mobile-nav-subgroup p { margin:12px 0 4px; padding-left:12px; color:rgba(255,255,255,.45); font-size:.64rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
-  .nav-cta { margin-top:24px; min-height:50px; display:flex; align-items:center; justify-content:center; }
-  .mobile-nav-footer { margin-top:auto; padding-top:28px; display:flex; justify-content:space-between; color:rgba(255,255,255,.55); font-size:.68rem; }
   .value-grid,.service-grid,.resource-grid,.blog-grid { grid-template-columns:1fr; }
   .section-heading-split { flex-direction:column; align-items:flex-start; }
   .page-hero { padding-top:118px; }
@@ -323,8 +329,15 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .credential-strip { padding:0 20px; grid-template-columns:1fr 1fr; }
   .credential-strip span { min-height:62px; border-bottom:1px solid rgba(255,255,255,.09); font-size:.81rem; }
   .credential-strip span:last-child { grid-column:1/-1; }
-  .section { padding-left:20px; padding-right:20px; }
-  .section-intro h2,.services-head h2,.team-heading h2 { font-size:clamp(2.8rem,12vw,4rem); }
+  .section { padding:clamp(64px,14vw,88px) 20px; }
+  .section-intro { margin-bottom:36px; }
+  .services-head,.team-heading { gap:22px; margin-bottom:36px; }
+  .section-intro h2,.services-head h2,.team-heading h2,.cta-card h2 { font-size:clamp(1.875rem,7.2vw,2.5rem); letter-spacing:-.035em; line-height:1.04; }
+  .value-card h3 { font-size:clamp(1.55rem,5.2vw,1.95rem); line-height:1.02; }
+  .story-card h3 { font-size:clamp(1.65rem,5.6vw,2.05rem); line-height:1.02; }
+  .review-copy blockquote { font-size:clamp(1.55rem,5vw,2rem); line-height:1.08; }
+  .accordion-item button span { font-size:clamp(1.05rem,3.8vw,1.2rem); line-height:1.25; }
+  .services-image span { font-size:clamp(1.2rem,4.5vw,1.45rem); }
   .approach-grid { grid-template-columns:1fr; }
   .story-card,.value-card:nth-child(4),.value-card:nth-child(5) { grid-column:auto; grid-row:auto; }
   .story-card { min-height:560px; grid-row:2; }
@@ -338,7 +351,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .person-card>div { height:118vw; max-height:620px; }
   .cta-section { padding-inline:20px; }
   .cta-card { min-height:480px; padding-inline:20px; }
-  .cta-card h2 { font-size:clamp(2.8rem,12vw,4.2rem); }
+  .cta-card h2 { margin-bottom:22px; }
   .enquiry-panel form { grid-template-columns:1fr; }
   .enquiry-panel label:last-of-type,.submit-button { grid-column:auto; }
   .footer-grid { grid-template-columns:1fr 1fr; gap:42px 20px; padding-bottom:80px; }
@@ -348,6 +361,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
 
 @media (max-width:420px) {
   .brand>span:last-child { max-width:190px; line-height:1.05; }
+  .section-intro h2,.services-head h2,.team-heading h2,.cta-card h2 { font-size:clamp(1.75rem,8.4vw,2.15rem); }
   .hero h1 { font-size:3.5rem; }
   .hero-actions { flex-direction:column; gap:14px; }
   .review-portrait { width:82%; }
