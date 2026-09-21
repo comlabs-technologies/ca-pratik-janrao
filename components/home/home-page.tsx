@@ -168,7 +168,7 @@ export function HomePage() {
             })}
           </div>
           <div className="services-image">
-            <Image src="/images/anita-swami.png" alt="CMA Anita Swami advising a client" fill sizes="(max-width: 800px) 100vw, 44vw" />
+            <Image src="/images/services-desk.jpg" alt="Professional desk with business registration, tax compliance, and financial accounting documents" fill sizes="(max-width: 800px) 100vw, 44vw" />
             <span>Clarity before complexity.</span>
           </div>
         </div>
@@ -177,7 +177,7 @@ export function HomePage() {
       <section className="dark-band" id="reviews">
         <div className="review-block reveal">
           <div className="review-portrait">
-            <Image src="/images/pratik-janrao.jpeg" alt="CA Pratik Janrao" fill sizes="280px" />
+            <Image src="/images/testimonial-consultation-room.jpg" alt="A private consultation room with a round table and professional meeting setup" fill sizes="280px" />
           </div>
           <div className="review-copy">
             <p className="stars">★★★★★</p>
