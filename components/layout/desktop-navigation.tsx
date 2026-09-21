@@ -2,11 +2,26 @@
 
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { knowledgeBankMegaMenu, primaryNav, serviceMegaMenu } from "@/content/navigation";
 
 export function DesktopNavigation() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const open = (key: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenMenu(key);
+  };
+
+  const close = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
+  };
+
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
 
   return (
     <nav className="desktop-nav" aria-label="Primary navigation">
@@ -15,15 +30,14 @@ export function DesktopNavigation() {
           return (
             <div
               key={item.label}
-              className="nav-dropdown"
-              onMouseEnter={() => setOpenMenu("services")}
-              onMouseLeave={() => setOpenMenu(null)}
+              className="nav-dropdown nav-dropdown-mega"
+              onMouseEnter={() => open("services")}
+              onMouseLeave={close}
             >
               <Link href={item.href} className="nav-dropdown-trigger">
                 {item.label} <ChevronDown size={14} />
               </Link>
-              {openMenu === "services" ? (
-                <div className="mega-menu">
+              <div className={`mega-menu ${openMenu === "services" ? "is-open" : ""}`} onMouseEnter={cancelClose}>
                   {serviceMegaMenu.map((group) => (
                     <div key={group.id}>
                       <p>{group.title}</p>
@@ -40,7 +54,6 @@ export function DesktopNavigation() {
                     View all services
                   </Link>
                 </div>
-              ) : null}
             </div>
           );
         }
@@ -49,15 +62,14 @@ export function DesktopNavigation() {
           return (
             <div
               key={item.label}
-              className="nav-dropdown"
-              onMouseEnter={() => setOpenMenu("knowledge-bank")}
-              onMouseLeave={() => setOpenMenu(null)}
+              className="nav-dropdown nav-dropdown-mega"
+              onMouseEnter={() => open("knowledge-bank")}
+              onMouseLeave={close}
             >
               <Link href={item.href} className="nav-dropdown-trigger">
                 {item.label} <ChevronDown size={14} />
               </Link>
-              {openMenu === "knowledge-bank" ? (
-                <div className="mega-menu mega-menu-knowledge">
+              <div className={`mega-menu mega-menu-knowledge ${openMenu === "knowledge-bank" ? "is-open" : ""}`} onMouseEnter={cancelClose}>
                   {knowledgeBankMegaMenu.map((group) => (
                     <div key={group.id}>
                       <Link href={group.href}>{group.label}</Link>
@@ -80,7 +92,6 @@ export function DesktopNavigation() {
                     View Knowledge Bank
                   </Link>
                 </div>
-              ) : null}
             </div>
           );
         }
@@ -90,21 +101,19 @@ export function DesktopNavigation() {
             <div
               key={item.label}
               className="nav-dropdown"
-              onMouseEnter={() => setOpenMenu(item.label)}
-              onMouseLeave={() => setOpenMenu(null)}
+              onMouseEnter={() => open(item.label)}
+              onMouseLeave={close}
             >
               <Link href={item.href} className="nav-dropdown-trigger">
                 {item.label} <ChevronDown size={14} />
               </Link>
-              {openMenu === item.label ? (
-                <div className="dropdown-panel">
-                  {item.children.map((child) => (
-                    <Link key={child.href} href={child.href}>
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
+              <div className={`dropdown-panel ${openMenu === item.label ? "is-open" : ""}`} onMouseEnter={cancelClose}>
+                {item.children.map((child) => (
+                  <Link key={child.href} href={child.href}>
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           );
         }
