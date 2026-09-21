@@ -309,6 +309,13 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .value-card:nth-child(5) { grid-column:1/-1; min-height:230px; }
   .footer-grid { grid-template-columns:repeat(2,1fr); }
   .section-intro h2,.services-head h2,.team-heading h2,.cta-card h2 { font-size:clamp(2.25rem,4.8vw,3rem); line-height:1; }
+  .page-hero { padding-top:118px; padding-bottom:56px; }
+  .page-hero h1 { font-size:clamp(2.35rem,5.2vw,3.35rem); line-height:1; }
+  .section-heading h2 { font-size:clamp(2rem,4.6vw,2.75rem); line-height:1.02; }
+  .consultation-band { padding:64px var(--edge); }
+  .consultation-band h2 { font-size:clamp(2rem,4.6vw,2.75rem); line-height:1.02; }
+  .article-layout .related-panel { margin-top:8px; padding-top:28px; border-top:1px solid var(--line); }
+  .contact-layout { gap:22px; }
 }
 
 @media (max-width:760px) {
@@ -317,8 +324,36 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .brand { max-width:calc(100vw - 76px); font-size:.87rem; }
   .brand-mark { width:32px; height:32px; flex:0 0 32px; font-size:.55rem; }
   .value-grid,.service-grid,.resource-grid,.blog-grid { grid-template-columns:1fr; }
-  .section-heading-split { flex-direction:column; align-items:flex-start; }
-  .page-hero { padding-top:118px; }
+  .section-heading-split { flex-direction:column; align-items:flex-start; gap:18px; }
+  .section-heading { margin-bottom:28px; }
+  .section-heading h2 { font-size:clamp(1.875rem,7.2vw,2.35rem); letter-spacing:-.035em; line-height:1.04; }
+  .section-heading-copy { margin-top:10px; font-size:.92rem; }
+  .page-hero { padding:108px 20px 44px; }
+  .page-hero-compact { padding-bottom:40px; }
+  .page-hero h1 { font-size:clamp(2rem,8vw,2.65rem); letter-spacing:-.035em; line-height:1.02; }
+  .page-hero-copy { margin-top:16px; font-size:.92rem; line-height:1.6; }
+  .breadcrumbs { margin-bottom:16px; }
+  .consultation-band { padding:52px 20px; }
+  .consultation-band-inner { gap:18px; }
+  .consultation-band h2 { font-size:clamp(1.875rem,7.2vw,2.35rem); letter-spacing:-.035em; line-height:1.04; }
+  .about-highlight blockquote { font-size:clamp(1.55rem,5.8vw,1.95rem); line-height:1.05; }
+  .about-story { min-height:min(78vw,440px); }
+  .about-story>div { inset:auto 22px 22px; }
+  .about-story h3 { font-size:clamp(1.65rem,5.6vw,2.05rem); }
+  .profile-portrait { min-height:min(92vw,480px); }
+  .profile-copy h2,.service-detail h2,.article-body h2 { margin:26px 0 10px; font-size:clamp(1.45rem,4.8vw,1.65rem); }
+  .profile-copy .pill,.service-detail .pill { margin-top:8px; }
+  .service-card,.blog-card,.resource-card { padding:20px; }
+  .service-card h3,.blog-card h3,.resource-card h3 { font-size:clamp(1.25rem,4.6vw,1.45rem); }
+  .blog-card-meta { flex-direction:column; align-items:flex-start; gap:10px; }
+  .legal-list h2 { font-size:clamp(1.2rem,4.2vw,1.35rem); line-height:1.15; }
+  .legal-list li { margin-bottom:22px; }
+  .share-links { flex-direction:column; align-items:flex-start; gap:8px; }
+  .sidebar-card { padding:22px; }
+  .sidebar-card h3 { font-size:clamp(1.3rem,4.5vw,1.45rem); }
+  .contact-layout,.split-copy { gap:22px; }
+  .map-fallback iframe { min-height:220px; }
+  .migration-state,.empty-state { padding:20px; }
   .hero { min-height:760px; align-items:flex-end; }
   .hero-image { object-position:58% center; }
   .hero-inner { padding:140px 20px 138px; }
@@ -341,6 +376,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .approach-grid { grid-template-columns:1fr; }
   .story-card,.value-card:nth-child(4),.value-card:nth-child(5) { grid-column:auto; grid-row:auto; }
   .story-card { min-height:560px; grid-row:2; }
+  .story-card.about-story { min-height:min(78vw,440px); grid-row:auto; grid-column:auto; }
   .value-card { min-height:245px; }
   .services-head,.team-heading { align-items:flex-start; flex-direction:column; }
   .services-layout,.contact-layout { grid-template-columns:1fr; }
@@ -362,6 +398,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
 @media (max-width:420px) {
   .brand>span:last-child { max-width:190px; line-height:1.05; }
   .section-intro h2,.services-head h2,.team-heading h2,.cta-card h2 { font-size:clamp(1.75rem,8.4vw,2.15rem); }
+  .page-hero h1,.section-heading h2,.consultation-band h2 { font-size:clamp(1.75rem,8.4vw,2.05rem); }
   .hero h1 { font-size:3.5rem; }
   .hero-actions { flex-direction:column; gap:14px; }
   .review-portrait { width:82%; }
