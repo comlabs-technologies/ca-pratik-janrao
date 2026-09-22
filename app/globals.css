@@ -222,9 +222,10 @@ h1,h2,h3,blockquote { text-wrap:balance; }
 .review-portrait { position:relative; height:310px; overflow:hidden; border-radius:8px; box-shadow:0 20px 50px rgba(0,0,0,.28); }
 .review-portrait img { object-fit:cover; object-position:center; filter:saturate(.65); }
 .stars { margin:0 0 25px; color:#f3eadf; font-size:.82rem; letter-spacing:.17em; }
+.review-scroll-stage { position:relative; }
+.review-scroll-pin { position:sticky; top:0; z-index:2; display:flex; align-items:center; min-height:100dvh; padding:calc(78px + clamp(24px,5vh,48px)) 0 clamp(40px,7vh,72px); box-sizing:border-box; }
 .review-copy blockquote { max-width:680px; margin:0 0 27px; font-family:var(--serif); font-size:clamp(2.25rem,3.5vw,3.8rem); font-weight:400; line-height:1; }
-.review-quote-scroll { margin:0 0 27px; }
-.review-quote-track { display:block; max-width:680px; font-family:var(--serif); font-size:clamp(2.25rem,3.5vw,3.8rem); font-weight:400; line-height:1; text-wrap:balance; }
+.review-quote-chars { display:block; text-wrap:balance; }
 .quote-char { display:inline; opacity:.2; will-change:opacity; }
 .review-copy span { color:rgba(255,255,255,.5); font-size:.65rem; letter-spacing:.13em; text-transform:uppercase; }
 .team-wrap { padding-top:clamp(120px,13vw,200px); }
@@ -380,7 +381,8 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .section-intro h2,.services-head h2,.team-heading h2,.cta-card h2 { font-size:clamp(1.875rem,7.2vw,2.5rem); letter-spacing:-.035em; line-height:1.04; }
   .value-card h3 { font-size:clamp(1.55rem,5.2vw,1.95rem); line-height:1.02; }
   .story-card h3 { font-size:clamp(1.65rem,5.6vw,2.05rem); line-height:1.02; }
-  .review-copy blockquote,.review-quote-track { font-size:clamp(1.55rem,5vw,2rem); line-height:1.08; }
+  .review-copy blockquote { font-size:clamp(1.55rem,5vw,2rem); line-height:1.08; }
+  .review-scroll-pin { padding:calc(68px + 32px) 0 clamp(36px,8vh,56px); }
   .accordion-item button span { font-size:clamp(1.05rem,3.8vw,1.2rem); line-height:1.25; }
   .services-image span { font-size:clamp(1.2rem,4.5vw,1.45rem); }
   .approach-grid { grid-template-columns:1fr; }
@@ -420,4 +422,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
   .reveal { opacity:1; transform:none; filter:none; }
+  .review-scroll-stage { height:auto!important; }
+  .review-scroll-pin { position:relative; }
+  .quote-char { opacity:1!important; }
 }
