@@ -43,11 +43,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(organizationSchema())} />
-        <div className="site-shell">
-          <SiteHeader />
-          <main id="main-content">{children}</main>
-          <SiteFooter />
-        </div>
+        <SiteHeader />
+        <main id="main-content">{children}</main>
+        <SiteFooter />
         <RevealProvider />
       </body>
     </html>
