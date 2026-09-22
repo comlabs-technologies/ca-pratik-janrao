@@ -57,22 +57,17 @@ export function SiteHeader() {
       </Link>
       <DesktopNavigation />
       <MobileNavigation open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <div className="header-actions">
-        <Link className="nav-cta header-consultation-cta" href="/contact-us">
-          Book a consultation
-        </Link>
-        <button
-          ref={triggerRef}
-          className="menu-button"
-          type="button"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setMenuOpen((value) => !value)}
-        >
-          {menuOpen ? <X /> : <Menu />}
-        </button>
-      </div>
+      <button
+        ref={triggerRef}
+        className="menu-button"
+        type="button"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-navigation"
+        onClick={() => setMenuOpen((value) => !value)}
+      >
+        {menuOpen ? <X /> : <Menu />}
+      </button>
     </header>
   );
 }
