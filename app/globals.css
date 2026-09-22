@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
-:root { --paper:#faf4ed; --card:#fffaf5; --ink:#26221d; --muted:#746d65; --red:#c84438; --line:rgba(38,34,29,.12); --dark:#24211d; --serif:var(--font-serif,"EB Garamond"),Georgia,serif; --sans:var(--font-sans,"DM Sans"),Arial,sans-serif; --ease:cubic-bezier(.22,1,.36,1); --edge:max(clamp(24px,6.2vw,100px),calc((100vw - 1600px)/2)); --max-width:1600px; --shadow-card:0 18px 50px rgba(63,43,24,.09); --shadow-card-elevated:0 28px 70px rgba(44,31,20,.3); --shadow-card-soft:0 16px 40px rgba(63,43,24,.08); }
+:root { --paper:#faf4ed; --card:#fffaf5; --ink:#26221d; --muted:#746d65; --red:#c84438; --line:rgba(38,34,29,.12); --dark:#24211d; --frame-border:rgba(38,34,29,.09); --serif:var(--font-serif,"EB Garamond"),Georgia,serif; --sans:var(--font-sans,"DM Sans"),Arial,sans-serif; --ease:cubic-bezier(.22,1,.36,1); --max-width:1680px; --frame-inset:clamp(32px,3.4vw,52px); --frame-width:calc(var(--max-width) + (2 * var(--frame-inset))); --edge:calc((100vw - min(100vw,var(--frame-width)))/2 + var(--frame-inset)); --shadow-card:0 18px 50px rgba(63,43,24,.09); --shadow-card-elevated:0 28px 70px rgba(44,31,20,.3); --shadow-card-soft:0 16px 40px rgba(63,43,24,.08); }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 [id] { scroll-margin-top:90px; }
 body { margin:0; overflow-x:hidden; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; }
+body::after { content:""; position:fixed; top:0; bottom:0; left:50%; z-index:1; width:min(100vw,var(--frame-width)); border-left:1px solid var(--frame-border); border-right:1px solid var(--frame-border); transform:translateX(-50%); pointer-events:none; }
 a { color:inherit; text-decoration:none; }
 button,input,textarea { font:inherit; }
 button,a { -webkit-tap-highlight-color:transparent; }
@@ -264,12 +265,12 @@ h1,h2,h3,blockquote { text-wrap:balance; }
 .direct-contact>span { width:100%; color:var(--muted); }
 .direct-contact a { display:inline-flex; align-items:center; gap:5px; font-weight:600; }
 
-footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; background:var(--dark); color:white; }
+footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; background:var(--dark); color:white; container-type:inline-size; }
 .footer-grid { display:grid; grid-template-columns:.7fr 1fr .7fr 1.4fr; gap:55px; padding-bottom:95px; }
 .footer-grid>div { display:flex; flex-direction:column; align-items:flex-start; gap:9px; }
 .footer-grid span { margin-bottom:8px; color:rgba(255,255,255,.44); font-size:.61rem; letter-spacing:.12em; text-transform:uppercase; }
 .footer-grid a,.footer-grid address { color:rgba(255,255,255,.78); font-size:.76rem; font-style:normal; line-height:1.65; }
-.footer-wordmark { white-space:nowrap; font-family:var(--serif); font-size:clamp(5.2rem,12vw,13rem); line-height:.72; letter-spacing:-.06em; color:#faf4ed; }
+.footer-wordmark { width:100%; max-width:100%; white-space:nowrap; font-family:var(--serif); font-size:clamp(2.75rem,6.65cqi,7.1rem); line-height:.92; letter-spacing:-.045em; color:#faf4ed; }
 .footer-wordmark i { font-weight:400; }
 .footer-bottom { margin-top:48px; padding-top:20px; display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.4); font-size:.65rem; }
 
@@ -320,7 +321,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
 }
 
 @media (max-width:760px) {
-  :root { --edge:20px; }
+  :root { --frame-inset:20px; --edge:20px; }
   .site-header { height:68px; }
   .brand { max-width:calc(100vw - 76px); font-size:.87rem; }
   .brand-mark { width:32px; height:32px; flex:0 0 32px; font-size:.55rem; }
@@ -392,7 +393,7 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .enquiry-panel form { grid-template-columns:1fr; }
   .enquiry-panel label:last-of-type,.submit-button { grid-column:auto; }
   .footer-grid { grid-template-columns:1fr 1fr; gap:42px 20px; padding-bottom:80px; }
-  .footer-wordmark { white-space:normal; font-size:5.3rem; line-height:.78; }
+  .footer-wordmark { white-space:normal; font-size:clamp(2.6rem,11vw,5rem); line-height:.88; }
   .footer-bottom { align-items:flex-start; flex-direction:column; gap:6px; }
 }
 
