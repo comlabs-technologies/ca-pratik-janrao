@@ -19,7 +19,7 @@ export function LocationsSection() {
               src={location.image}
               alt={location.imageAlt}
               fill
-              sizes="(max-width: 760px) 100vw, 50vw"
+              sizes="(max-width: 760px) 100vw, (max-width: 980px) 50vw, 25vw"
               className="location-card-image"
             />
             <div>
