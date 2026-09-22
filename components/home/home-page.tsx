@@ -8,6 +8,7 @@ import { homepageServices } from "@/content/services";
 import { homepageTeamPreview } from "@/content/team";
 import { TeamCard } from "@/components/team/team-card";
 import { ContactForm } from "@/components/forms/contact-form";
+import { ScrollRevealQuote } from "@/components/home/scroll-reveal-quote";
 
 const faqs = [
   { q: "What type of clients do you work with?", a: "We advise founders, professionals, family-run businesses, SMEs and growing companies across a broad range of sectors." },
@@ -175,13 +176,13 @@ export function HomePage() {
       </section>
 
       <section className="dark-band" id="reviews">
-        <div className="review-block reveal">
-          <div className="review-portrait">
+        <div className="review-block">
+          <div className="review-portrait reveal">
             <Image src="/images/testimonial-consultation-room.jpg" alt="A private consultation room with a round table and professional meeting setup" fill sizes="280px" />
           </div>
           <div className="review-copy">
             <p className="stars">★★★★★</p>
-            <blockquote>“Every issue explained clearly. Every question answered with patience. Professional, helpful and consistently dependable.”</blockquote>
+            <ScrollRevealQuote />
             <span>Client feedback</span>
           </div>
         </div>
