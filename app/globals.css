@@ -225,9 +225,9 @@ h1,h2,h3,blockquote { text-wrap:balance; }
 .review-scroll-stage { position:relative; }
 .review-scroll-pin { position:sticky; top:0; z-index:2; display:flex; align-items:center; min-height:100dvh; padding:calc(78px + clamp(24px,5vh,48px)) 0 clamp(40px,7vh,72px); box-sizing:border-box; }
 .review-copy blockquote { max-width:680px; margin:0 0 27px; font-family:var(--serif); font-size:clamp(2.25rem,3.5vw,3.8rem); font-weight:400; line-height:1; }
-.review-quote-chars { display:block; text-wrap:balance; }
-.quote-char { display:inline; opacity:.2; will-change:opacity; }
-.review-copy span { color:rgba(255,255,255,.5); font-size:.65rem; letter-spacing:.13em; text-transform:uppercase; }
+.review-quote-chars { display:block; font:inherit; letter-spacing:inherit; line-height:inherit; text-transform:none; text-wrap:balance; }
+.quote-char { display:inline; font:inherit; letter-spacing:inherit; opacity:.2; will-change:opacity; }
+.review-copy>span { color:rgba(255,255,255,.5); font-size:.65rem; letter-spacing:.13em; text-transform:uppercase; }
 .team-wrap { padding-top:clamp(120px,13vw,200px); }
 .team-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:40px; margin-bottom:52px; }
 .dark-label { color:rgba(255,255,255,.62); }
