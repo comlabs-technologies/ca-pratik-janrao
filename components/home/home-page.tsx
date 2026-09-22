@@ -9,6 +9,7 @@ import { homepageTeamPreview } from "@/content/team";
 import { TeamCard } from "@/components/team/team-card";
 import { ContactForm } from "@/components/forms/contact-form";
 import { ReviewTestimonialScroll } from "@/components/home/scroll-reveal-quote";
+import { LocationsSection } from "@/components/home/locations-section";
 
 const faqs = [
   { q: "What type of clients do you work with?", a: "We advise founders, professionals, family-run businesses, SMEs and growing companies across a broad range of sectors." },
@@ -174,6 +175,8 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      <LocationsSection />
 
       <section className="dark-band" id="reviews">
         <ReviewTestimonialScroll />
