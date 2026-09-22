@@ -109,7 +109,7 @@ export function ReviewTestimonialScroll() {
                     className="quote-char"
                     style={{ opacity: 0.2 }}
                   >
-                    {char === " " ? "\u00a0" : char}
+                    {char}
                   </span>
                 ))}
               </span>
