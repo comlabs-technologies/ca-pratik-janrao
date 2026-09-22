@@ -10,6 +10,7 @@ const STAGGER_GRIDS: { grid: string; item: string; step?: number; cap?: number }
   { grid: ".blog-grid", item: ":scope > .blog-card, :scope > article" },
   { grid: ".resource-grid", item: ":scope > .resource-card, :scope > a.resource-card, :scope > article" },
   { grid: ".team-grid", item: ":scope > .person-card, :scope > .person-card-link, :scope > article" },
+  { grid: ".locations-grid", item: ":scope > .location-card, :scope > article" },
   { grid: ".accordion-list", item: ":scope > .accordion-item" },
   { grid: ".faq-list", item: ":scope > .faq-item" },
   { grid: ".footer-grid", item: ":scope > div", step: 70, cap: 560 },
