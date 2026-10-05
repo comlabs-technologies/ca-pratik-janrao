@@ -1,8 +1,11 @@
 import { PageHero } from "@/components/shared/page-hero";
 import { BlogCard } from "@/components/blog/blog-card";
-import { blogPosts } from "@/content/blogs";
+import { getAllBlogPosts } from "@/lib/cms/public";
 import { createMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, jsonLd } from "@/lib/schema";
+
+// Reads CMS content at request time so newly published posts appear immediately.
+export const dynamic = "force-dynamic";
 
 export const metadata = createMetadata({
   title: "Blogs",
@@ -10,7 +13,8 @@ export const metadata = createMetadata({
   path: "/blogs",
 });
 
-export default function BlogsPage() {
+export default async function BlogsPage() {
+  const blogPosts = await getAllBlogPosts();
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Blogs" },

@@ -44,3 +44,6 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# CMS data (JSON store, resumes, uploaded images)
+/.data/

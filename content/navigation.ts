@@ -22,6 +22,7 @@ export const primaryNav = [
     megaMenu: "knowledge-bank" as const,
   },
   { label: "Blogs", href: "/blogs" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact-us" },
 ];
