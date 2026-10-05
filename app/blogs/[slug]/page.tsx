@@ -6,7 +6,7 @@ import { ArticleBody } from "@/components/blog/article-body";
 import { RelatedArticles } from "@/components/blog/related-articles";
 import { PageHero } from "@/components/shared/page-hero";
 import { ConsultationCta } from "@/components/shared/consultation-cta";
-import { blogPosts, getBlogBySlug, getRelatedPosts } from "@/content/blogs";
+import { getAllBlogPosts } from "@/lib/cms/public";
 import { getServiceBySlug } from "@/content/services";
 import { site } from "@/content/site";
 import { createMetadata } from "@/lib/metadata";
@@ -18,13 +18,17 @@ function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" }).format(new Date(date));
 }
 
-export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+// Posts can be published from the admin/MCP at any time, so render on request.
+export const dynamic = "force-dynamic";
+
+async function findPost(slug: string) {
+  const posts = await getAllBlogPosts();
+  return { post: posts.find((entry) => entry.slug === slug), related: posts.filter((entry) => entry.slug !== slug).slice(0, 3) };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogBySlug(slug);
+  const { post } = await findPost(slug);
   if (!post) return {};
 
   return createMetadata({
@@ -37,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getBlogBySlug(slug);
+  const { post, related } = await findPost(slug);
   if (!post) notFound();
 
   const breadcrumbs = [
@@ -45,7 +49,6 @@ export default async function BlogDetailPage({ params }: PageProps) {
     { label: "Blogs", href: "/blogs" },
     { label: post.title },
   ];
-  const related = getRelatedPosts(post.slug);
   const relatedService = post.relatedServiceSlug ? getServiceBySlug(post.relatedServiceSlug) : null;
   const shareUrl = `${site.url}/blogs/${post.slug}`;
 
@@ -57,7 +60,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
       <section className="section article-layout">
         <article className="article-main reveal">
-          <ArticleBody sections={post.sections} />
+          {post.heroImage ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className="article-hero-image" src={post.heroImage} alt="" />
+          ) : null}
+          <ArticleBody post={post} />
           <div className="share-links">
             <span>Share</span>
             <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">

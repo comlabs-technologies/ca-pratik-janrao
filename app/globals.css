@@ -440,3 +440,14 @@ footer { position:relative; overflow:hidden; padding:68px var(--edge) 26px; back
   .review-scroll-pin { position:relative; }
   .quote-char { opacity:1!important; }
 }
+
+.article-hero-image { display:block; width:100%; height:auto; max-height:420px; margin:0 0 28px; border-radius:14px; object-fit:cover; }
+.article-body img { max-width:100%; height:auto; border-radius:10px; }
+.article-body ol { margin:0; padding-left:18px; color:var(--muted); line-height:1.7; }
+.article-body a { color:var(--red); text-decoration:underline; }
+.article-body blockquote { margin:24px 0; padding-left:18px; border-left:2px solid var(--red); color:var(--muted); font-family:var(--serif); font-size:1.2rem; }
+.article-body table { width:100%; border-collapse:collapse; font-size:.88rem; }
+.article-body th,.article-body td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; }
+.form-status { grid-column:1/-1; margin:0; padding:12px 14px; border-radius:7px; font-size:.84rem; line-height:1.5; }
+.form-status.is-success { background:#e8f3ea; color:#1f5130; }
+.form-status.is-error { background:#fbe9e7; color:#8f2a20; }

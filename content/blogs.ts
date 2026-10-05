@@ -12,6 +12,8 @@ export type BlogPost = {
   category: string;
   heroImage?: string;
   sections: BlogSection[];
+  /** Set for CMS-authored posts; takes precedence over `sections`. */
+  contentHtml?: string;
   relatedServiceSlug?: string;
   seoTitle: string;
   seoDescription: string;

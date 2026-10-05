@@ -1,9 +1,14 @@
-import type { BlogSection } from "@/content/blogs";
+import type { BlogPost } from "@/content/blogs";
+import { sanitizeHtml } from "@/lib/cms/sanitize";
 
-export function ArticleBody({ sections }: { sections: BlogSection[] }) {
+export function ArticleBody({ post }: { post: Pick<BlogPost, "sections" | "contentHtml"> }) {
+  if (post.contentHtml) {
+    return <div className="article-body" dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.contentHtml) }} />;
+  }
+
   return (
     <div className="article-body">
-      {sections.map((section, index) => {
+      {post.sections.map((section, index) => {
         if (section.type === "paragraph") {
           return <p key={index}>{section.content}</p>;
         }

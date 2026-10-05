@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, EB_Garamond } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { SiteHeader } from "@/components/layout/site-header";
 import { RevealProvider } from "@/components/shared/reveal";
 import { organizationSchema, jsonLd } from "@/lib/schema";
@@ -39,13 +40,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-IN" className={`${dmSans.variable} ${ebGaramond.variable}`}>
       <body className="antialiased">
-        <a className="skip-link" href="#main-content">
-          Skip to content
-        </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(organizationSchema())} />
-        <SiteHeader />
-        <main id="main-content">{children}</main>
-        <SiteFooter />
+        <SiteChrome header={<SiteHeader />} footer={<SiteFooter />}>
+          {children}
+        </SiteChrome>
         <RevealProvider />
       </body>
     </html>

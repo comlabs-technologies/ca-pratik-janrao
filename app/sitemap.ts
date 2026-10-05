@@ -1,17 +1,21 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/content/blogs";
+import { getAllBlogPosts, getPublishedCaseStudies } from "@/lib/cms/public";
 import { getAllKnowledgeResources, knowledgeBankSections } from "@/content/knowledge-bank";
 import { services } from "@/content/services";
 import { getTeamMembersWithProfiles } from "@/content/team";
 import { site } from "@/content/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [blogPosts, caseStudies] = await Promise.all([getAllBlogPosts(), getPublishedCaseStudies()]);
   const staticRoutes = [
     "",
     "/about-us",
     "/our-team",
     "/our-services",
     "/blogs",
+    "/case-studies",
     "/knowledge-bank",
     "/careers",
     "/contact-us",
@@ -36,6 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
   }));
 
+  const caseStudyRoutes = caseStudies.map((study) => ({
+    url: `${site.url}/case-studies/${study.slug}`,
+    lastModified: new Date(study.updatedAt),
+  }));
+
   const knowledgeSectionRoutes = knowledgeBankSections.map((section) => ({
     url: `${site.url}/knowledge-bank/${section.slug}`,
     lastModified: new Date(),
@@ -53,6 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...serviceRoutes,
     ...teamRoutes,
     ...blogRoutes,
+    ...caseStudyRoutes,
     ...knowledgeSectionRoutes,
     ...knowledgeDetailRoutes,
   ];

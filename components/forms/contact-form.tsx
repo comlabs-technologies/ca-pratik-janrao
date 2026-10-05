@@ -3,10 +3,14 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { site } from "@/content/site";
+import { useFormSubmit } from "./use-form-submit";
 
-const formEnabled = process.env.NEXT_PUBLIC_CONTACT_FORM_ENABLED === "true";
+// Submissions are stored by /api/contact; set to "false" to fall back to a mailto draft.
+const formEnabled = process.env.NEXT_PUBLIC_CONTACT_FORM_ENABLED !== "false";
 
 export function ContactForm() {
+  const { state, onSubmit } = useFormSubmit("/api/contact", "Thank you. We have received your message and will get back to you shortly.");
+
   if (!formEnabled) {
     return (
       <div className="enquiry-panel">
@@ -43,7 +47,7 @@ export function ContactForm() {
 
   return (
     <div className="enquiry-panel">
-      <form action="/api/contact" method="post">
+      <form onSubmit={onSubmit}>
         <label>
           <span>Your name</span>
           <input name="name" type="text" autoComplete="name" placeholder="Your full name" required />
@@ -60,8 +64,16 @@ export function ContactForm() {
           <span>How can we help?</span>
           <textarea name="message" rows={3} placeholder="Tell us briefly about the matter" required />
         </label>
-        <button className="submit-button" type="submit">
-          Let&apos;s work together <ArrowRight size={16} />
+        <div className="visually-hidden" aria-hidden="true">
+          <input name="company_website" type="text" tabIndex={-1} autoComplete="off" />
+        </div>
+        {state.message ? (
+          <p className={`form-status ${state.phase === "success" ? "is-success" : "is-error"}`} role="status">
+            {state.message}
+          </p>
+        ) : null}
+        <button className="submit-button" type="submit" disabled={state.phase === "sending"}>
+          {state.phase === "sending" ? "Sending…" : <>Let&apos;s work together <ArrowRight size={16} /></>}
         </button>
       </form>
       <DirectContactLinks />

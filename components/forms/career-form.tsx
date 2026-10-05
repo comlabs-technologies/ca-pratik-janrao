@@ -3,12 +3,15 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
+import { useFormSubmit } from "./use-form-submit";
 
 const roles = ["Articleship", "Internship", "Employee", "Professional"] as const;
-const formEnabled = process.env.NEXT_PUBLIC_CAREER_FORM_ENABLED === "true";
+// Applications are stored by /api/careers; set to "false" to fall back to a mailto draft.
+const formEnabled = process.env.NEXT_PUBLIC_CAREER_FORM_ENABLED !== "false";
 
 export function CareerForm() {
   const [role, setRole] = useState<(typeof roles)[number]>("Articleship");
+  const { state, onSubmit } = useFormSubmit("/api/careers", "Thank you. Your application has been received and will be reviewed by the team.");
 
   return (
     <div className="enquiry-panel career-form">
@@ -19,7 +22,7 @@ export function CareerForm() {
         </p>
       ) : null}
 
-      <form action={formEnabled ? "/api/careers" : `mailto:${site.emails[1]}`} method={formEnabled ? "post" : "post"} encType={formEnabled ? "multipart/form-data" : "text/plain"}>
+      <form {...(formEnabled ? { onSubmit } : { action: `mailto:${site.emails[1]}`, method: "post", encType: "text/plain" })}>
         <label>
           <span>Role</span>
           <select name="role" value={role} onChange={(event) => setRole(event.target.value as (typeof roles)[number])} required>
@@ -53,8 +56,16 @@ export function CareerForm() {
             <small>PDF or Word document, up to 5 MB.</small>
           </label>
         ) : null}
-        <button className="submit-button" type="submit">
-          {formEnabled ? "Submit application" : "Open email draft"} <ArrowRight size={16} />
+        <div className="visually-hidden" aria-hidden="true">
+          <input name="company_website" type="text" tabIndex={-1} autoComplete="off" />
+        </div>
+        {state.message ? (
+          <p className={`form-status ${state.phase === "success" ? "is-success" : "is-error"}`} role="status">
+            {state.message}
+          </p>
+        ) : null}
+        <button className="submit-button" type="submit" disabled={state.phase === "sending"}>
+          {state.phase === "sending" ? "Sending…" : <>{formEnabled ? "Submit application" : "Open email draft"} <ArrowRight size={16} /></>}
         </button>
       </form>
       <p className="form-privacy">By submitting, you consent to the firm reviewing your details for recruitment purposes only.</p>
