@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/cms/schemas";
 import { createSubmission } from "@/lib/cms/submissions";
+import { sendFormNotification } from "@/lib/email/send-form-notification";
 import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
@@ -17,5 +18,21 @@ export async function POST(request: Request) {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Please check your details and try again." }, { status: 400 });
 
   await createSubmission({ kind: "contact", ...parsed.data });
+
+  try {
+    await sendFormNotification({
+      subject: `Website enquiry from ${parsed.data.name}`,
+      replyTo: parsed.data.email,
+      fields: {
+        Name: parsed.data.name,
+        Email: parsed.data.email,
+        Phone: parsed.data.phone,
+        Message: parsed.data.message,
+      },
+    });
+  } catch (error) {
+    console.error("[contact] Failed to send notification email:", error);
+  }
+
   return NextResponse.json({ ok: true });
 }

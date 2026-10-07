@@ -16,7 +16,7 @@ export function DesktopNavigation() {
 
   const close = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
   };
 
   const cancelClose = () => {
@@ -24,7 +24,7 @@ export function DesktopNavigation() {
   };
 
   return (
-    <nav className="desktop-nav" aria-label="Primary navigation">
+    <nav className="desktop-nav" aria-label="Primary navigation" onMouseLeave={close}>
       {primaryNav.map((item) => {
         if (item.megaMenu === "services") {
           return (
@@ -32,7 +32,6 @@ export function DesktopNavigation() {
               key={item.label}
               className="nav-dropdown nav-dropdown-mega"
               onMouseEnter={() => open("services")}
-              onMouseLeave={close}
             >
               <Link href={item.href} className="nav-dropdown-trigger">
                 {item.label} <ChevronDown size={14} />
@@ -64,7 +63,6 @@ export function DesktopNavigation() {
               key={item.label}
               className="nav-dropdown nav-dropdown-mega"
               onMouseEnter={() => open("knowledge-bank")}
-              onMouseLeave={close}
             >
               <Link href={item.href} className="nav-dropdown-trigger">
                 {item.label} <ChevronDown size={14} />
@@ -102,7 +100,6 @@ export function DesktopNavigation() {
               key={item.label}
               className="nav-dropdown"
               onMouseEnter={() => open(item.label)}
-              onMouseLeave={close}
             >
               <Link href={item.href} className="nav-dropdown-trigger">
                 {item.label} <ChevronDown size={14} />
