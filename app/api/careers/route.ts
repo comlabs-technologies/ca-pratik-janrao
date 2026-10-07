@@ -23,14 +23,17 @@ export async function POST(request: Request) {
     resume = { name: file.name, data: Buffer.from(await file.arrayBuffer()) };
   }
 
+  let stored = false;
   try {
     await createSubmission({ kind: "career", ...parsed.data }, resume);
+    stored = true;
   } catch (error) {
-    return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 400 });
+    console.error("[careers] Failed to store submission:", error);
   }
 
+  let emailed = false;
   try {
-    await sendFormNotification({
+    const result = await sendFormNotification({
       subject: `Career application: ${parsed.data.role ?? "General"} — ${parsed.data.name}`,
       replyTo: parsed.data.email,
       fields: {
@@ -39,11 +42,19 @@ export async function POST(request: Request) {
         Phone: parsed.data.phone,
         Role: parsed.data.role,
         Message: parsed.data.message,
-        Resume: resume ? `${resume.name} (stored in admin)` : undefined,
+        Resume: resume ? `${resume.name} (attached in admin when stored)` : undefined,
       },
     });
+    emailed = result.sent;
   } catch (error) {
     console.error("[careers] Failed to send notification email:", error);
+  }
+
+  if (!stored && !emailed) {
+    return NextResponse.json(
+      { ok: false, error: "We could not submit your application right now. Please email your CV directly or try again shortly." },
+      { status: 503 },
+    );
   }
 
   return NextResponse.json({ ok: true });

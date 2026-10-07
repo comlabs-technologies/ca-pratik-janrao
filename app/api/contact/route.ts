@@ -17,10 +17,17 @@ export async function POST(request: Request) {
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Please check your details and try again." }, { status: 400 });
 
-  await createSubmission({ kind: "contact", ...parsed.data });
-
+  let stored = false;
   try {
-    await sendFormNotification({
+    await createSubmission({ kind: "contact", ...parsed.data });
+    stored = true;
+  } catch (error) {
+    console.error("[contact] Failed to store submission:", error);
+  }
+
+  let emailed = false;
+  try {
+    const result = await sendFormNotification({
       subject: `Website enquiry from ${parsed.data.name}`,
       replyTo: parsed.data.email,
       fields: {
@@ -30,8 +37,16 @@ export async function POST(request: Request) {
         Message: parsed.data.message,
       },
     });
+    emailed = result.sent;
   } catch (error) {
     console.error("[contact] Failed to send notification email:", error);
+  }
+
+  if (!stored && !emailed) {
+    return NextResponse.json(
+      { ok: false, error: "We could not submit your message right now. Please email us directly or try again shortly." },
+      { status: 503 },
+    );
   }
 
   return NextResponse.json({ ok: true });
