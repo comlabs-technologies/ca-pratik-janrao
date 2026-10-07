@@ -6,7 +6,14 @@ import path from "node:path";
  * (default: ./.data). Writes are serialised per collection and atomic.
  * Swap this module for a database client if the site moves to serverless hosting.
  */
-export const DATA_DIR = process.env.CMS_DATA_DIR ?? path.join(process.cwd(), ".data");
+function resolveDataDir() {
+  if (process.env.CMS_DATA_DIR?.trim()) return process.env.CMS_DATA_DIR.trim();
+  // Vercel and similar serverless hosts only allow writes under /tmp.
+  if (process.env.VERCEL) return path.join("/tmp", "pja-cms-data");
+  return path.join(process.cwd(), ".data");
+}
+
+export const DATA_DIR = resolveDataDir();
 
 // Runtime data lives outside the build, so keep the bundler from tracing these paths.
 const at = (...parts: string[]) => path.join(/*turbopackIgnore: true*/ DATA_DIR, ...parts);
