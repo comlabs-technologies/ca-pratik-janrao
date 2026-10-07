@@ -7,9 +7,9 @@ export function LocationsSection() {
       <div className="section-intro reveal">
         <p className="eyebrow">Our locations</p>
         <h2>
-          Advisory across the cities
+          Support in the cities
           <br />
-          our clients call home.
+          where our clients are based.
         </h2>
       </div>
       <div className="locations-grid reveal-group">

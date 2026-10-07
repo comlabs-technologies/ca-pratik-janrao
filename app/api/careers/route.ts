@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { careerSchema } from "@/lib/cms/schemas";
 import { createSubmission, MAX_RESUME_BYTES } from "@/lib/cms/submissions";
+import { sendFormNotification } from "@/lib/email/send-form-notification";
 import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
@@ -27,5 +28,23 @@ export async function POST(request: Request) {
   } catch (error) {
     return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 400 });
   }
+
+  try {
+    await sendFormNotification({
+      subject: `Career application: ${parsed.data.role ?? "General"} — ${parsed.data.name}`,
+      replyTo: parsed.data.email,
+      fields: {
+        Name: parsed.data.name,
+        Email: parsed.data.email,
+        Phone: parsed.data.phone,
+        Role: parsed.data.role,
+        Message: parsed.data.message,
+        Resume: resume ? `${resume.name} (stored in admin)` : undefined,
+      },
+    });
+  } catch (error) {
+    console.error("[careers] Failed to send notification email:", error);
+  }
+
   return NextResponse.json({ ok: true });
 }
