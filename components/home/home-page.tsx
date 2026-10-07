@@ -12,11 +12,26 @@ import { ReviewTestimonialScroll } from "@/components/home/scroll-reveal-quote";
 import { LocationsSection } from "@/components/home/locations-section";
 
 const faqs = [
-  { q: "What type of clients do you work with?", a: "We advise founders, professionals, family-run businesses, SMEs and growing companies across a broad range of sectors." },
-  { q: "Can you manage audit, tax and compliance together?", a: "Yes. Our multidisciplinary structure brings Chartered Accountants, Cost Accountants, Company Secretaries and legal professionals into one coordinated team." },
-  { q: "Do you support businesses outside Pune?", a: "Yes. The firm works with clients beyond Pune and brings an India and Dubai advisory perspective to suitable matters." },
-  { q: "What information should I share initially?", a: "A short description of the matter, the relevant entity and any important deadline is enough for the first conversation." },
-  { q: "What happens after the first call?", a: "We clarify the scope, identify the right specialists and outline the practical next steps before work begins." },
+  {
+    q: "What type of clients do you work with?",
+    a: "We work with founders, professionals, family businesses, small and mid-sized companies and growing firms across many industries.",
+  },
+  {
+    q: "Can you manage audit, tax and compliance together?",
+    a: "Yes. Chartered Accountants, Cost Accountants, Company Secretaries and lawyers work together on one team, so nothing falls through the cracks.",
+  },
+  {
+    q: "Do you support businesses outside Pune?",
+    a: "Yes. We work with clients across India and can advise on India and Dubai matters where that fits your situation.",
+  },
+  {
+    q: "What information should I share initially?",
+    a: "For a first call, a short summary of your issue, which company it relates to and any deadline is enough.",
+  },
+  {
+    q: "What happens after the first call?",
+    a: "We agree what needs to be done, bring in the right people and set out clear next steps before work starts.",
+  },
 ];
 
 export function HomePage() {
@@ -36,7 +51,7 @@ export function HomePage() {
             without the jargon.
           </h1>
           <p className="hero-copy">
-            Senior-led audit, tax, GST, corporate compliance and business advisory for organisations operating in India and Dubai.
+            Led by senior professionals. We handle audit, tax, GST, company filings and business advice for companies in India and Dubai.
           </p>
           <div className="hero-actions">
             <Link className="pill pill-light" href="/contact-us">
@@ -54,14 +69,14 @@ export function HomePage() {
           </div>
           <span>
             <b>Established 2014</b>
-            <small>Senior attention on every matter</small>
+            <small>Senior partners involved in every matter</small>
           </span>
         </div>
         <div className="hero-feature">
           <div className="feature-thumb">
             <Image src="/images/pratik-janrao.jpeg" alt="CA Pratik Janrao" fill sizes="110px" />
           </div>
-          <p>Direct access to an accountable, multidisciplinary team.</p>
+          <p>Speak directly with a responsible team that brings finance, company law and legal skills together.</p>
         </div>
       </section>
 
@@ -90,7 +105,7 @@ export function HomePage() {
               <br />
               every time.
             </h3>
-            <p>No jargon, no runaround. You always know where the matter stands.</p>
+            <p>No jargon and no passing you around. You always know where things stand.</p>
           </article>
           <article className="value-card">
             <p className="eyebrow">Senior attention</p>
@@ -99,7 +114,7 @@ export function HomePage() {
               <br />
               Close to you.
             </h3>
-            <p>Experienced professionals stay involved from the first question to resolution.</p>
+            <p>Experienced people stay involved from your first question through to the end.</p>
           </article>
           <article className="story-card">
             <Image src="/images/approach-consultation.png" alt="Professionals reviewing financial documents together" fill sizes="(max-width: 800px) 100vw, 34vw" />
@@ -109,7 +124,7 @@ export function HomePage() {
                 <br />
                 without the distance.
               </h3>
-              <p>Rigorous in the detail. Direct in the conversation.</p>
+              <p>Careful with the details. Straightforward in how we talk to you.</p>
             </div>
           </article>
           <article className="value-card">
@@ -119,7 +134,7 @@ export function HomePage() {
               <br />
               compliance.
             </h3>
-            <p>Advice considers the regulation, the risk and the real business outcome.</p>
+            <p>Advice looks at the rules, the risks and what it means for your business.</p>
           </article>
           <article className="value-card">
             <p className="eyebrow">One accountable team</p>
@@ -128,7 +143,7 @@ export function HomePage() {
               <br />
               every discipline.
             </h3>
-            <p>Financial, secretarial and legal expertise work together rather than in silos.</p>
+            <p>Finance, company secretarial and legal skills work as one team—not in separate corners.</p>
           </article>
         </div>
       </section>
