@@ -122,7 +122,7 @@ export function DesktopNavigation() {
         );
       })}
       <Link className="nav-cta" href="/contact-us">
-        Book a consultation
+        Book a Consultation
       </Link>
     </nav>
   );

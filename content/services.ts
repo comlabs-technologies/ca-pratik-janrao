@@ -485,35 +485,6 @@ export const services: Service[] = [
   },
 ];
 
-/** Plain-language blurbs for the homepage service accordion only. */
-const homepageServiceText: Partial<Record<string, string>> = {
-  "auditing-and-assurance-services":
-    "Audit and assurance to keep your accounts accurate, compliant and well controlled.",
-  "gst-consultancy-and-compliances-services":
-    "Help with GST registration, returns and day-to-day compliance, plus clear advice on indirect tax.",
-  "business-model-canvassing-services":
-    "Structured planning for your business model, goals, resources and compliance needs.",
-  "financial-accounting-support-services":
-    "Support to keep your books and financial records accurate and up to date.",
-  "msme-and-startup-registrations-services":
-    "Guidance and hands-on help with MSME and startup registrations and the benefits they unlock.",
-  "tax-due-diligence-services":
-    "Tax reviews before deals, investments or restructuring so you know what you are taking on.",
-};
-
-export const homepageServices = [
-  services[0],
-  services[2],
-  services[3],
-  services[13],
-  services[5],
-  services[12],
-].map((service) => ({
-  title: service.shortTitle,
-  text: homepageServiceText[service.slug] ?? service.excerpt,
-  href: `/our-services/${service.slug}`,
-}));
-
 export function getServiceBySlug(slug: string) {
   return services.find((service) => service.slug === slug);
 }

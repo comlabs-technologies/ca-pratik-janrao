@@ -7,10 +7,13 @@ export function LocationsSection() {
       <div className="section-intro reveal">
         <p className="eyebrow">Our locations</p>
         <h2>
-          Support in the cities
+          Professional support wherever
           <br />
-          where our clients are based.
+          your business operates.
         </h2>
+        <p className="section-heading-copy">
+          Our team supports clients across India and businesses with requirements in Dubai.
+        </p>
       </div>
       <div className="locations-grid reveal-group">
         {firmLocations.map((location) => (
