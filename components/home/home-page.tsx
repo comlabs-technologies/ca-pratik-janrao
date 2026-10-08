@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Minus, Plus } from "lucide-react";
-import { homepageServices } from "@/content/services";
+import { homepageServices } from "@/content/homepage-services";
 import { homepageTeamPreview } from "@/content/team";
 import { TeamCard } from "@/components/team/team-card";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -14,23 +14,23 @@ import { LocationsSection } from "@/components/home/locations-section";
 const faqs = [
   {
     q: "What type of clients do you work with?",
-    a: "We work with founders, professionals, family businesses, small and mid-sized companies and growing firms across many industries.",
+    a: "We work with individuals, professionals, founders, startups, family businesses and small to mid-sized companies across different industries.",
   },
   {
-    q: "Can you manage audit, tax and compliance together?",
-    a: "Yes. Chartered Accountants, Cost Accountants, Company Secretaries and lawyers work together on one team, so nothing falls through the cracks.",
+    q: "Can you manage accounting, audit, tax and company filings together?",
+    a: "Yes. Our team covers accounting, audit, income tax, GST, company filings and related legal matters. This gives you one place to manage different financial and business requirements.",
   },
   {
-    q: "Do you support businesses outside Pune?",
-    a: "Yes. We work with clients across India and can advise on India and Dubai matters where that fits your situation.",
+    q: "Do you support clients outside Pune?",
+    a: "Yes. We work with clients across India and also support businesses with requirements in Dubai. Many discussions and document processes can be completed online.",
   },
   {
-    q: "What information should I share initially?",
-    a: "For a first call, a short summary of your issue, which company it relates to and any deadline is enough.",
+    q: "What information should I share during the first conversation?",
+    a: "A short description of your requirement is enough to begin. If documents are needed, our team will tell you exactly what to provide.",
   },
   {
     q: "What happens after the first call?",
-    a: "We agree what needs to be done, bring in the right people and set out clear next steps before work starts.",
+    a: "We will understand your requirement, explain the recommended next steps and share the expected work, timeline and professional fees before beginning.",
   },
 ];
 
@@ -45,20 +45,17 @@ export function HomePage() {
         <div className="hero-overlay" />
         <div className="hero-inner">
           <p className="eyebrow light">Chartered accountants · Pune</p>
-          <h1>
-            Financial clarity
-            <br />
-            without the jargon.
-          </h1>
+          <h1>Accounting, tax and business advice you can understand.</h1>
           <p className="hero-copy">
-            Led by senior professionals. We handle audit, tax, GST, company filings and business advice for companies in India and Dubai.
+            We help individuals, professionals, startups and established businesses with audits, tax, GST, company filings and
+            everyday financial matters in India and Dubai.
           </p>
           <div className="hero-actions">
             <Link className="pill pill-light" href="/contact-us">
-              Get advice <ArrowRight size={15} />
+              Talk to Our Team <ArrowRight size={15} />
             </Link>
             <Link className="plain-link" href="/about-us">
-              Learn more
+              Learn About Us
             </Link>
           </div>
         </div>
@@ -68,15 +65,15 @@ export function HomePage() {
             <Image src="/images/anita-swami.png" alt="" width={34} height={34} />
           </div>
           <span>
-            <b>Established 2014</b>
-            <small>Senior partners involved in every matter</small>
+            <b>Established in 2014</b>
+            <small>Experienced professionals involved throughout your work</small>
           </span>
         </div>
         <div className="hero-feature">
           <div className="feature-thumb">
             <Image src="/images/pratik-janrao.jpeg" alt="CA Pratik Janrao" fill sizes="110px" />
           </div>
-          <p>Speak directly with a responsible team that brings finance, company law and legal skills together.</p>
+          <p>Get clear answers from a team that understands accounting, tax, company law and legal matters.</p>
         </div>
       </section>
 
@@ -84,66 +81,43 @@ export function HomePage() {
         <span>Chartered Accountants</span>
         <span>Cost Accountants</span>
         <span>Company Secretaries</span>
-        <span>Legal professionals</span>
-        <span>India &amp; Dubai</span>
+        <span>Legal Professionals</span>
+        <span>India and Dubai</span>
       </section>
 
       <section className="approach section" id="about">
         <div className="section-intro reveal">
-          <p className="eyebrow">Our approach</p>
+          <p className="eyebrow">How we work</p>
           <h2>
-            Making complex finance
+            Clear advice. Reliable support.
             <br />
-            feel like a conversation.
+            One responsible team.
           </h2>
+          <p className="section-heading-copy">We explain what needs to be done, why it matters and what happens next.</p>
         </div>
         <div className="approach-grid reveal">
           <article className="value-card">
-            <p className="eyebrow">Clear guidance</p>
-            <h3>
-              Plain language,
-              <br />
-              every time.
-            </h3>
-            <p>No jargon and no passing you around. You always know where things stand.</p>
+            <h3>Simple explanations</h3>
+            <p>We explain financial and legal matters in clear language, so you always understand where things stand.</p>
           </article>
           <article className="value-card">
-            <p className="eyebrow">Senior attention</p>
-            <h3>
-              Close to the work.
-              <br />
-              Close to you.
-            </h3>
-            <p>Experienced people stay involved from your first question through to the end.</p>
+            <h3>Experienced people stay involved</h3>
+            <p>Your work is handled with attention from experienced professionals, from the first discussion to completion.</p>
           </article>
           <article className="story-card">
             <Image src="/images/approach-consultation.png" alt="Professionals reviewing financial documents together" fill sizes="(max-width: 800px) 100vw, 34vw" />
             <div>
-              <h3>
-                Your advisory team,
-                <br />
-                without the distance.
-              </h3>
-              <p>Careful with the details. Straightforward in how we talk to you.</p>
+              <h3>Professional support, without the confusion.</h3>
+              <p>Careful with every detail. Clear in every conversation.</p>
             </div>
           </article>
           <article className="value-card">
-            <p className="eyebrow">Commercial context</p>
-            <h3>
-              More than
-              <br />
-              compliance.
-            </h3>
-            <p>Advice looks at the rules, the risks and what it means for your business.</p>
+            <h3>Advice that fits your business</h3>
+            <p>We look beyond forms and deadlines to understand the effect on your business, finances and future plans.</p>
           </article>
           <article className="value-card">
-            <p className="eyebrow">One accountable team</p>
-            <h3>
-              One view across
-              <br />
-              every discipline.
-            </h3>
-            <p>Finance, company secretarial and legal skills work as one team—not in separate corners.</p>
+            <h3>One team for different needs</h3>
+            <p>Accounting, tax, company law and legal support are handled together, saving you from coordinating with multiple professionals.</p>
           </article>
         </div>
       </section>
@@ -153,13 +127,16 @@ export function HomePage() {
           <div>
             <p className="eyebrow">Our services</p>
             <h2>
-              All the support your
+              Support for your accounts,
               <br />
-              business needs. None of the noise.
+              taxes and business.
             </h2>
+            <p className="section-heading-copy">
+              Whether you need regular accounting support or help with a specific financial matter, our team can guide you through it.
+            </p>
           </div>
           <Link className="pill pill-dark" href="/contact-us">
-            Book a call with us
+            Discuss Your Requirements
           </Link>
         </div>
         <div className="services-layout reveal">
@@ -176,7 +153,7 @@ export function HomePage() {
                     <p>
                       {service.text}{" "}
                       <Link href={service.href} className="inline-link">
-                        View service
+                        View Service
                       </Link>
                     </p>
                   </div>
@@ -186,7 +163,7 @@ export function HomePage() {
           </div>
           <div className="services-image">
             <Image src="/images/services-desk.jpg" alt="Professional desk with business registration, tax compliance, and financial accounting documents" fill sizes="(max-width: 800px) 100vw, 44vw" />
-            <span>Clarity before complexity.</span>
+            <span>Clear answers before complicated processes.</span>
           </div>
         </div>
       </section>
@@ -194,19 +171,23 @@ export function HomePage() {
       <LocationsSection />
 
       <section className="dark-band" id="reviews">
+        <div className="review-section-intro reveal">
+          <p className="eyebrow dark-label">Client feedback</p>
+          <h2>Trusted for clear answers and dependable support.</h2>
+        </div>
         <ReviewTestimonialScroll />
         <div className="team-wrap" id="team">
           <div className="team-heading reveal">
             <div>
               <p className="eyebrow dark-label">Our team</p>
-              <h2>
-                Professionals who lead
-                <br />
-                with clarity, not complexity.
-              </h2>
+              <h2>Meet the professionals handling your work.</h2>
+              <p className="team-heading-copy">
+                Our team brings together accounting, tax, company law, cost management and legal experience to provide complete
+                support under one roof.
+              </p>
             </div>
-            <Link className="pill pill-light small" href="/careers">
-              Join us
+            <Link className="pill pill-light small" href="/our-team">
+              Meet the Team
             </Link>
           </div>
           <div className="team-grid reveal">
@@ -222,14 +203,14 @@ export function HomePage() {
           <Image src="/images/hero-office.png" alt="A private advisory conversation" fill sizes="(max-width: 800px) 100vw, 80vw" />
           <div className="cta-shade" />
           <div>
-            <p className="eyebrow light">A conversation first</p>
-            <h2>
-              Start with the question,
-              <br />
-              not the paperwork.
-            </h2>
+            <p className="eyebrow light">Let&apos;s talk</p>
+            <h2>Have a question? Start with a conversation.</h2>
+            <p className="cta-card-copy">
+              Tell us what you need help with. We will understand the matter, explain the next steps and let you know how we can
+              support you.
+            </p>
             <Link className="pill pill-light" href="/contact-us">
-              Schedule a consultation
+              Schedule a Consultation
             </Link>
           </div>
         </div>
@@ -237,12 +218,8 @@ export function HomePage() {
 
       <section className="contact section" id="contact">
         <div className="section-intro reveal">
-          <p className="eyebrow">Questions</p>
-          <h2>
-            Everything you were
-            <br />
-            about to email us.
-          </h2>
+          <p className="eyebrow">Common questions</p>
+          <h2>Questions clients often ask before contacting us.</h2>
         </div>
         <div className="contact-layout reveal">
           <div className="faq-list">
@@ -261,7 +238,7 @@ export function HomePage() {
               );
             })}
           </div>
-          <ContactForm />
+          <ContactForm heading="Tell us how we can help." />
         </div>
       </section>
     </>

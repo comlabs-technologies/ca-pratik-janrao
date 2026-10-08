@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef } from "react";
 
 const QUOTE =
-  "“Every issue explained clearly. Every question answered with patience. Professional, helpful and consistently dependable.”";
+  "“Every issue was explained clearly and every question was answered with patience. The team was professional, helpful and consistently dependable.”";
 
 const SCROLL_PX_PER_CHAR = 16;
 

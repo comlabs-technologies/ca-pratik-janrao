@@ -47,7 +47,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "CMA Anita Swami",
     qualification: "Cost and Management Accountant",
-    role: "Core team",
+    role: "Core Team",
     category: "core",
     slug: "cma-anita-swami-member",
     image: "/images/anita-swami.png",

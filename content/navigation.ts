@@ -49,22 +49,26 @@ export const knowledgeBankMegaMenu = knowledgeBankSections.map((section) => ({
 }));
 
 export const footerNav = {
-  explore: [
-    { label: "Our firm", href: "/about-us" },
-    { label: "Our team", href: "/our-team" },
-    { label: "Reviews", href: "/#reviews" },
+  company: [
+    { label: "About the Firm", href: "/about-us" },
+    { label: "Our Team", href: "/our-team" },
+    { label: "Client Feedback", href: "/#reviews" },
+    { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact-us" },
   ],
   services: [
-    { label: "Audit & assurance", href: "/our-services/auditing-and-assurance-services" },
-    { label: "Tax & GST", href: "/our-services/gst-consultancy-and-compliances-services" },
-    { label: "Business advisory", href: "/our-services/business-model-canvassing-services" },
-    { label: "All services", href: "/our-services" },
+    { label: "Audit and Assurance", href: "/our-services/auditing-and-assurance-services" },
+    { label: "Income Tax and TDS", href: "/our-services/tds-compliances-of-income-tax-and-gst-services" },
+    { label: "GST Support", href: "/our-services/gst-consultancy-and-compliances-services" },
+    { label: "Accounting Support", href: "/our-services/financial-accounting-support-services" },
+    { label: "Business Registrations", href: "/our-services/msme-and-startup-registrations-services" },
+    { label: "Company and LLP Filings", href: "/our-services/mca-compliances-services" },
+    { label: "View All Services", href: "/our-services" },
   ],
   resources: [
     { label: "Knowledge Bank", href: "/knowledge-bank" },
-    { label: "Insights", href: "/blogs" },
-    { label: "Careers", href: "/careers" },
+    { label: "Blogs and Insights", href: "/blogs" },
+    { label: "Important Updates", href: "/knowledge-bank/bulletins" },
     { label: "Disclaimer", href: "/disclaimer" },
   ],
 };

@@ -118,7 +118,7 @@ export function MobileNavigation({ open, onClose }: MobileNavigationProps) {
         );
       })}
       <Link className="nav-cta" href="/contact-us" onClick={onClose}>
-        Book a consultation
+        Book a Consultation
       </Link>
       <div className="mobile-nav-footer">
         <span>Pune · India &amp; Dubai</span>
